@@ -1,0 +1,8 @@
+.noscript {
+    border-radius: 8px;
+    box-shadow: 5px 0 5px rgba(0, 25, 0, 0.7);
+    border: 2px solid #cecece;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+}

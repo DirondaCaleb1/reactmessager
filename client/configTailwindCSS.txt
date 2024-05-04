@@ -1,0 +1,23 @@
+Configurer Tailwind CSS : 
+   - Installer le package tailwindcss (npm i tailwindcss)
+    - Generate a Tailwind CSS configuration file by running:
+
+     npx tailwindcss init -p
+3. Configure PostCSS
+Create a postcss.config.js file in your project's root directory with the following content:
+
+javascript
+
+module.exports = {
+
+  plugins: {
+
+    tailwindcss: {},
+
+    autoprefixer: {},
+
+  },
+
+};
+
+This configuration ensures that PostCSS processes your CSS files correctly.

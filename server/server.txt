@@ -1,0 +1,41 @@
+if (arrayKeys.length > 1) {
+        console.log("Votre correspondant a un appel en cours");
+        for (let i = 0; i < arrayKeys.length; i++) {
+          arrayExists.push(arrayKeys[i]);
+          if (arrayKeys[i] !== data.from.id) {
+            key = arrayKeys[i];
+            arrayIn.push(arrayKeys[i]);
+            //inComingVoiceCall.delete(key);
+            //break;
+            //arrayIn = Array.from(inComingVoiceCall.keys());
+          } else {
+            //arrayIn = Array.from(inComingVoiceCall.keys());
+          }
+        }
+      }
+
+    if (arrayIn.length === 0 && arrayExists.length === 0) {
+      console.log("Emettre un appel");
+    } else if (
+      arrayIn.length === 1 &&
+      arrayExists.length === arrayKeys.length
+    ) {
+      console.log("Votre correspondant a un appel en cours");
+      arrayExists.shift();
+      arrayExists.shift();
+      arrayIn.shift();
+      //inComingVoiceCall.delete(key);
+    }
+
+
+     /*if (arrayKeys.length > 1) {
+      for (let i = 0; i < arrayKeys.length; i++) {
+        if (arrayKeys[i] !== data.from.id) {
+          key = arrayKeys[i];
+        } else {
+          key = undefined;
+        }
+      }
+    }
+
+    console.log(isExist);*/

@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id               Int            @id @default(autoincrement())
+  email            String         @unique
+  phone            String         @default("")
+  about            String         @default("")
+  name             String
+  profilePicture   String         @default("")
+  connectWithLogin Boolean        @default(false)
+  password         String         @default("")
+  isConnect        Boolean        @default(false)
+  sentMessages     Messages[]     @relation("Sender")
+  recievedMessages Messages[]     @relation("Receiver")
+  outgoingCalls    HystoryCalls[] @relation("OutgoingCall")
+  incomingCalls    HystoryCalls[] @relation("IncomingCall")
+}
+
+model Messages {
+  id            Int      @id @default(autoincrement())
+  senderId      Int
+  recieverId    Int
+  type          String   @default("text")
+  message       String
+  messageStatus String   @default("sent")
+  createdAt     DateTime @default(now())
+  reciever      Users    @relation("Receiver", fields: [recieverId], references: [id])
+  sender        Users    @relation("Sender", fields: [senderId], references: [id])
+}
+
+model HystoryCalls {
+  id               Int      @id @default(autoincrement())
+  outgoingCallId   Int
+  incomingCallId   Int
+  typeCall         String
+  callerStatus     String   @default("missed")
+  totalDuration    String
+  startCallingTime DateTime @default(now())
+  endCallingTime   DateTime @updatedAt
+  outgoingUser     Users    @relation("OutgoingCall", fields: [outgoingCallId], references: [id])
+  incomingUser     Users    @relation("IncomingCall", fields: [incomingCallId], references: [id])
+}

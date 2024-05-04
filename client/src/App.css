@@ -1,0 +1,44 @@
+.container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.div {
+  margin: auto;
+  width: 30%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+input {
+  border-radius: 0;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+button {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+html,
+body {
+  font-family: 'Figtree', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button:focus {
+  outline: 0;
+}
